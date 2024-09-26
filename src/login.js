@@ -1,7 +1,7 @@
-import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
-import axios from 'axios'
-import { login } from './Services'
+import React, { useState } from 'react';
+import { login } from './Services';
+import { HashLoader } from 'react-spinners';
+import './login.css';
 
 const Login = (props) => {
   const [userName, setUserName] = useState('')
@@ -9,8 +9,7 @@ const Login = (props) => {
   const [userNameError, setUserNameError] = useState('')
   const [passwordError, setPasswordError] = useState('')
   const [responseLogin, setResponseLogin] = useState('')
-
-  const navigate = useNavigate()
+  const [loading, setLoading] = useState(false)
 
   const manageLoggedUser = (data) => {
     if(data && data.username) {
@@ -18,6 +17,7 @@ const Login = (props) => {
     } else {
         setResponseLogin(data + "!!!")
     }
+    setLoading(false)
   }
 
   const onButtonClick = () => {
@@ -38,7 +38,7 @@ const Login = (props) => {
     }*/
 
     if ('' === userName) {
-        setUserNameError('Please enter your email')
+        setUserNameError('Please enter your username')
         return
     }
   
@@ -52,9 +52,19 @@ const Login = (props) => {
       return
     }*/
     var payload = "username=" + userName + "&password=" + password;
+    setLoading(true)
     console.log(login(payload, manageLoggedUser))
 
   }
+
+  if(loading) {
+    return (
+        <div className='spinner-center'>
+            <HashLoader loading={loading} size={40} color="#123abc" speedMultiplier={1.5} />
+        </div>
+    )
+  }
+
 
   return (
     !responseLogin ? (
