@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { login } from './Services';
-import { HashLoader } from 'react-spinners';
+import { ClockLoader } from 'react-spinners';
 import './login.css';
 
 const Login = (props) => {
@@ -60,7 +60,7 @@ const Login = (props) => {
   if(loading) {
     return (
         <div className='spinner-center'>
-            <HashLoader loading={loading} size={40} color="#123abc" speedMultiplier={1.5} />
+            <ClockLoader loading={loading} size={50} color="#123abc" speedMultiplier={1.5} />
         </div>
     )
   }
