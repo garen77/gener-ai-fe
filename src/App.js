@@ -1,8 +1,10 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import Home from './home'
 import Login from './login'
+
 import './App.css'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
+import Menu from './components/menu/Menu'
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(false)
@@ -11,6 +13,7 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
+        {loggedIn ? <Menu /> : null }
         <Routes>
           <Route
             path="/"

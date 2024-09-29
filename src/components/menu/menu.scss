@@ -1,0 +1,58 @@
+@import '../../styles/themeColors.scss';
+
+.Menu{
+    position: relative;
+    margin: 2em 3em;
+    @media screen and (max-width: 768px) {
+        width:80%;
+        display: flex;
+        justify-content: center;
+    }
+}
+
+.m-item{
+    position: absolute;
+    top: 0;
+    
+    width: 8.5em;
+    background-color: $menu;
+    box-shadow: 1px 2px 2px $menu;
+
+    padding: 0.2em;
+    
+    border-radius: 1em;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 1.5em;
+    @media screen and (max-width: 768px) {
+        font-size: 1.3em;
+    }
+    color: #EDFFEC;
+    cursor: pointer;
+
+    transition: 1s;
+}
+
+.m-item:hover{
+    border: 1px solid black;
+}
+
+.m-logo{
+    z-index: 1;
+}
+
+.open-1{
+    top: 1.8em;
+    background-color: #9b5de5;
+}
+.open-2{
+    top: 3.6em;
+    background-color: $pink;
+}
+.open-3{
+    top: 5.4em;
+    background-color: #00BBF9;
+}
