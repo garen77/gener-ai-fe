@@ -4,7 +4,8 @@ import Login from './login'
 
 import './App.css'
 import { useState } from 'react'
-import Menu from './components/menu'
+import Menu from './components/menu/menu'
+
 
 
 function App() {
