@@ -1,7 +1,11 @@
 import axios from "axios";
+const productionHost = 'https://gener-ai-six.vercel.app'
+const developementHost = 'http://localhost:8000'
+
+var serverHost = process.env.NODE_ENV === 'production' ? productionHost : developementHost
 
 export async function login(payload, callback) {
-    const resp = await axios.post('https://gener-ai-six.vercel.app/login', payload, {
+    const resp = await axios.post(serverHost + '/login', payload, {
         headers: { 
             'Content-Type': 'application/x-www-form-urlencoded',
             'Access-Control-Allow-Origin': '*',
