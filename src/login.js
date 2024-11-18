@@ -17,7 +17,9 @@ const Login = (props) => {
         props.setLoggedIn(true)
         if(data.email) {
           props.setEmail(data.email)
-        }        
+        } else {
+          props.setEmail('')
+        }  
     } else {
         setResponseLogin(data + "!!!")
     }
