@@ -1,11 +1,10 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import Home from './home'
-import Login from './login'
+import Login from './components/login/login'
 
 import './App.css'
 import { useState } from 'react'
 import Menu from './components/menu/menu'
-
 
 
 function App() {

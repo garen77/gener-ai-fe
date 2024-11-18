@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { login } from './Services';
+import { login } from '../../Services';
 import { BounceLoader } from 'react-spinners';
-import './login.css';
+import './login.scss';
 
 const Login = (props) => {
   const [userName, setUserName] = useState('')
