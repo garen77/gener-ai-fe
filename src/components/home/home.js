@@ -1,18 +1,9 @@
 import React from 'react'
-import { useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
+import Login from '../login/login'
 
 const Home = (props) => {
   const { loggedIn, email } = props
-  const navigate = useNavigate()
-
-  const onButtonClick = () => {
-    if(loggedIn) {
-        localStorage.removeItem('user')
-        props.setLoggedIn(false)
-    } else {
-        navigate('/login')
-    }
-  }
 
   return (
     <div className="mainContainer">
@@ -21,13 +12,15 @@ const Home = (props) => {
       </div>
       <div>This is the home page.</div>
       <div className={'buttonContainer'}>
-        <input
-          className={'inputButton'}
-          type="button"
-          onClick={onButtonClick}
-          value={loggedIn ? 'Log out' : 'Log in'}
-        />
-        {loggedIn ? <div>Your email address is {email}</div> : <div />}
+        <Login setLoggedIn={props.setLoggedIn} setEmail={props.setEmail} />
+        {
+          loggedIn ? 
+            <div>Your email address is {email}</div>
+              :
+          (<div>
+            or <Link to='/register'>Register</Link>
+          </div>)
+        }
       </div>
     </div>
   )

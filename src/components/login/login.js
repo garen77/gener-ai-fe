@@ -4,6 +4,7 @@ import { BounceLoader } from 'react-spinners';
 import './login.scss';
 
 const Login = (props) => {
+
   const [userName, setUserName] = useState('')
   const [password, setPassword] = useState('')
   const [userNameError, setUserNameError] = useState('')
@@ -22,6 +23,7 @@ const Login = (props) => {
         }  
     } else {
         setResponseLogin(data + "!!!")
+        props.setLoggedIn(false)
     }
     setLoading(false)
   }
