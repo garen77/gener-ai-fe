@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import {Icon} from 'react-icons-kit'
 import {eyeOff} from 'react-icons-kit/feather/eyeOff'
 import {eye} from 'react-icons-kit/feather/eye'
+import { useNavigate } from 'react-router-dom'
 
 
 const Register = (props) => {
@@ -9,6 +10,7 @@ const Register = (props) => {
     const [password, setPassword] = useState('')
     const [passwordType, setPasswordType] = useState('password')
     const [paswordIcon, setPasswordIcon] = useState(eyeOff)
+    const navigate = useNavigate()
 
     const handleToggle = () => {
         if(passwordType === 'password') {
@@ -18,6 +20,10 @@ const Register = (props) => {
             setPasswordIcon(eyeOff)
             setPasswordType('password')
         }
+    }
+
+    const back = () => {
+        navigate('/')
     }
 
     return (
@@ -51,6 +57,9 @@ const Register = (props) => {
                 <span class="flex justify-around items-center" onClick={handleToggle}>
                     <Icon class="absolute mr-10" icon={paswordIcon} size={25}/>
                 </span>
+            </div>
+            <div className={'inputContainer'}>
+                <input className={'inputButton'} type="button" onClick={back} value={'Back'} />
             </div>
         </div>
     )

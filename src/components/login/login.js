@@ -10,7 +10,6 @@ const Login = (props) => {
   const [userNameError, setUserNameError] = useState('')
   const [passwordError, setPasswordError] = useState('')
   const [responseLogin, setResponseLogin] = useState('')
-  const [loading, setLoading] = useState(false)
 
   const manageLoggedUser = (data) => {
     if(data && data.username) {
@@ -25,7 +24,7 @@ const Login = (props) => {
         setResponseLogin(data + "!!!")
         props.setLoggedIn(false)
     }
-    setLoading(false)
+    props.setLoading(false)
   }
 
   const onButtonClick = () => {
@@ -60,15 +59,15 @@ const Login = (props) => {
       return
     }*/
     var payload = "username=" + userName + "&password=" + password;
-    setLoading(true)
+    props.setLoading(true)
     console.log(login(payload, manageLoggedUser))
 
   }
 
-  if(loading) {
+  if(props.loading) {
     return (
         <div className='spinner-center'>
-            <BounceLoader loading={loading} size={50} color="#123abc" speedMultiplier={1.5} />
+            <BounceLoader loading={props.loading} size={50} color="#123abc" speedMultiplier={1.5} />
         </div>
     )
   }

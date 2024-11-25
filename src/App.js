@@ -10,6 +10,7 @@ import Register from './components/register/register'
 function App() {
   const [loggedIn, setLoggedIn] = useState(false)
   const [email, setEmail] = useState('')
+  const [loading, setLoading] = useState(false)
 
   return (
     <div className="App">
@@ -18,10 +19,10 @@ function App() {
         <Routes>
           <Route
             path="/"
-            element={<Home email={email} loggedIn={loggedIn} setLoggedIn={setLoggedIn} setEmail={setEmail} />}
+            element={<Home loading={loading} setLoading={setLoading} email={email} loggedIn={loggedIn} setLoggedIn={setLoggedIn} setEmail={setEmail} />}
           />
-          <Route path="/login" element={<Login setLoggedIn={setLoggedIn} setEmail={setEmail} />} />
-          <Route path="/register" element={<Register setLoggedIn={setLoggedIn} setEmail={setEmail} />} />
+          <Route path="/login" element={<Login loading={loading} setLoading={setLoading} setLoggedIn={setLoggedIn} setEmail={setEmail} />} />
+          <Route path="/register" element={<Register loading={loading} setLoading={setLoading} setLoggedIn={setLoggedIn} setEmail={setEmail} />} />
         </Routes>
       </BrowserRouter>
     </div>
