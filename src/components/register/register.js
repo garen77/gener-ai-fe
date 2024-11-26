@@ -1,29 +1,33 @@
 import React, { useState } from 'react'
-import {Icon} from 'react-icons-kit'
-import {eyeOff} from 'react-icons-kit/feather/eyeOff'
-import {eye} from 'react-icons-kit/feather/eye'
 import { useNavigate } from 'react-router-dom'
+import Password from '../input/password'
 
 
 const Register = (props) => {
     const [userName, setUserName] = useState('')
     const [password, setPassword] = useState('')
-    const [passwordType, setPasswordType] = useState('password')
-    const [paswordIcon, setPasswordIcon] = useState(eyeOff)
+    const [userNameError, setUserNameError] = useState('')
+    const [passwordError, setPasswordError] = useState('')
+  
     const navigate = useNavigate()
-
-    const handleToggle = () => {
-        if(passwordType === 'password') {
-            setPasswordIcon(eye)
-            setPasswordType('text')
-        } else {
-            setPasswordIcon(eyeOff)
-            setPasswordType('password')
-        }
-    }
 
     const back = () => {
         navigate('/')
+    }
+
+    const register = () => {
+        setUserNameError('')
+        setPasswordError('')
+
+        if ('' === userName) {
+            setUserNameError('Please enter your username')
+            return
+        }
+      
+        if ('' === password) {
+          setPasswordError('Please enter a password')
+          return
+        }
     }
 
     return (
@@ -41,32 +45,18 @@ const Register = (props) => {
                 onChange={(ev) => setUserName(ev.target.value)}
                 className={'inputBox'}
                 />
-                <label className="errorLabel">{"errore"}</label>
+                <label className="errorLabel">{userNameError}</label>
             </div>
-            <div className={'inputContainer'}>
-                <label htmlFor='password'>Password</label>
-                <input
-                id={"password"}
-                type={passwordType}
-                value={password}
-                placeholder="Enter your password here"
-                onChange={(ev) => setPassword(ev.target.value)}
-                className={'inputBox'}
-                />
-                <label className="errorLabel">{"errore"}</label>
-                <span class="flex justify-around items-center" onClick={handleToggle}>
-                    <Icon class="absolute mr-10" icon={paswordIcon} size={25}/>
-                </span>
-            </div>
+            <Password 
+                password={password} 
+                setPassword={setPassword}
+                passwordError={passwordError} />
             <div className={'inputContainer'}>
                 <input className={'inputButton'} type="button" onClick={back} value={'Back'} />
+                <input className={'inputButton'} type="button" onClick={register} value={'Register'} />
             </div>
         </div>
     )
-}
-
-Register.propTypes = {
-
 }
 
 export default Register

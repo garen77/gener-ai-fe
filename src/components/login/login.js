@@ -103,7 +103,7 @@ const Login = (props) => {
             <div className={'inputContainer'}>
                 <input className={'inputButton'} type="button" onClick={onButtonClick} value={'Log in'} />
             </div>
-            </div>
+          </div>
     ) : (<div className={'mainContainer'}>
             <div className={'titleContainer'}>
                 <div>{responseLogin}</div>
