@@ -24,7 +24,7 @@ const Password = (props) => {
         id={"password"}
         type={passwordType}
         value={props.password}
-        placeholder="Enter your password here"
+        placeholder={props.placeholder ? props.placeholder : "Enter your password here"}
         onChange={(ev) => props.setPassword(ev.target.value)}
         className={'inputBox'}
         />
