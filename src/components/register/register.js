@@ -15,7 +15,6 @@ const Register = (props) => {
     const [codeError, setCodeError] = useState('')
     const [emailError, setEmailError] = useState('')
     const [passwordError, setPasswordError] = useState('')
-    const [responseRegister, setResponseRegister] = useState('')
 
     const navigate = useNavigate()
 
@@ -24,13 +23,23 @@ const Register = (props) => {
     }
 
     const registerCallback = (data) => {
-        setResponseRegister(data)
+        if(data && data.includes('username')) {
+            setUserNameError(data)
+        }
+        if(data && data.includes('codice')) {
+            setCodeError(data)
+        }
+        if(data && data.includes('email')) {
+            setEmailError(data)
+        }
         props.setLoading(false)
     }
 
     const onRegisterClick = () => {
         setUserNameError('')
         setPasswordError('')
+        setCodeError('')
+        setEmailError('')
 
         if ('' === userName) {
             setUserNameError('Please enter an username')
@@ -114,11 +123,6 @@ const Register = (props) => {
                     <input className={'inputButton'} type="button" onClick={onRegisterClick} value={'Register'} />
                 </div>
             </div>
-            {responseRegister && <div className={'mainContainer'}>
-                    <div className={'titleContainer'}>
-                        <div>{responseRegister}</div>
-                    </div>
-                </div>}
         </>
     )
 }
