@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { login } from '../../Services';
 import { BounceLoader } from 'react-spinners';
 import './login.scss';
+import Password from '../input/password';
 
 const Login = (props) => {
 
@@ -90,15 +91,11 @@ const Login = (props) => {
                 <label className="errorLabel">{userNameError}</label>
             </div>
             <br />
-            <div className={'inputContainer'}>
-                <input
-                value={password}
-                placeholder="Enter your password here"
-                onChange={(ev) => setPassword(ev.target.value)}
-                className={'inputBox'}
-                />
-                <label className="errorLabel">{passwordError}</label>
-            </div>
+            <Password 
+                    password={password} 
+                    setPassword={setPassword}
+                    passwordError={passwordError}
+                    placeholder={"Enter password"} />
             <br />
             <div className={'inputContainer'}>
                 <input className={'inputButton'} type="button" onClick={onButtonClick} value={'Log in'} />
