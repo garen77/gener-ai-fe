@@ -6,6 +6,7 @@ import './App.css'
 import { useState } from 'react'
 import Menu from './components/menu/menu'
 import Register from './components/register/register'
+import PopupBalloon from './components/popaballoon/PopupBalloon'
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(false)
@@ -23,6 +24,7 @@ function App() {
           />
           <Route path="/login" element={<Login loading={loading} setLoading={setLoading} setLoggedIn={setLoggedIn} setEmail={setEmail} />} />
           <Route path="/register" element={<Register loading={loading} setLoading={setLoading} setLoggedIn={setLoggedIn} setEmail={setEmail} />} />
+          <Route path="/balloon" element={<PopupBalloon />} />
         </Routes>
       </BrowserRouter>
     </div>

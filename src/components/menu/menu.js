@@ -36,8 +36,8 @@ const Menu = props => {
                 Home
             </div>
             <div className={setClassNames(2)}
-                onClick={() => pushToRoute("/about")}>
-                About
+                onClick={() => pushToRoute("/balloon")}>
+                Balloon
             </div>
         </div>
   );
