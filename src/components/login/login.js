@@ -82,11 +82,13 @@ const Login = (props) => {
             </div>
             <br />
             <div className={'inputContainer'}>
+              <label htmlFor='username'>Username</label>
                 <input
-                value={userName}
-                placeholder="Enter your username here"
-                onChange={(ev) => setUserName(ev.target.value)}
-                className={'inputBox'}
+                  id="username"
+                  value={userName}
+                  placeholder="Enter your username here"
+                  onChange={(ev) => setUserName(ev.target.value)}
+                  className={'inputBox'}
                 />
                 <label className="errorLabel">{userNameError}</label>
             </div>
