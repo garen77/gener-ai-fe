@@ -15,8 +15,8 @@ const GameSignupForm = (props) => {
 
   const navigate = useNavigate()
 
-  const login = () => {
-      navigate('/login')
+  const home = () => {
+      navigate('/')
   }
 
   const registerCallback = (data) => {
@@ -197,7 +197,7 @@ const GameSignupForm = (props) => {
           <div className="mt-6 text-center">
             <p className="text-gray-600">
               Hai già un account?{' '}
-              <button onClick={login} className="text-purple-600 hover:text-purple-700 font-medium">
+              <button onClick={home} className="text-purple-600 hover:text-purple-700 font-medium">
                 Accedi
               </button>
             </p>

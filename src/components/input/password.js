@@ -30,7 +30,7 @@ const Password = (props) => {
         />
         <label className="errorLabel">{props.passwordError}</label>
         <span className="flex justify-around items-center" onClick={handleToggle}>
-            <Icon className="absolute mr-10" icon={paswordIcon} size={25}/>
+            <Icon className="absolute mr-10" style={{'margin-bottom': '3rem'}} icon={paswordIcon} size={25}/>
         </span>
     </div>
     )

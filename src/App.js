@@ -1,7 +1,5 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import Home from './components/home/home'
-import Login from './components/login/login'
-
 import './App.css'
 import { useState } from 'react'
 import Menu from './components/menu/menu'
@@ -22,7 +20,6 @@ function App() {
             path="/"
             element={<Home loading={loading} setLoading={setLoading} email={email} loggedIn={loggedIn} setLoggedIn={setLoggedIn} setEmail={setEmail} />}
           />
-          <Route path="/login" element={<Login loading={loading} setLoading={setLoading} setLoggedIn={setLoggedIn} setEmail={setEmail} />} />
           <Route path="/register" element={<GameSignupForm loading={loading} setLoading={setLoading} setLoggedIn={setLoggedIn} setEmail={setEmail} />} />
           <Route path="/balloon" element={<PopupBalloon />} />
         </Routes>
