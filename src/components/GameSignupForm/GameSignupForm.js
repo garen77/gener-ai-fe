@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import { register } from '../../Services'
 import { useNavigate } from 'react-router-dom';
 import './GameSignupForm.scss'
+import {Icon} from 'react-icons-kit'
+import {eyeOff} from 'react-icons-kit/feather/eyeOff'
+import {eye} from 'react-icons-kit/feather/eye'
 
 const GameSignupForm = (props) => {
   const [formData, setFormData] = useState({
@@ -12,12 +15,36 @@ const GameSignupForm = (props) => {
   });
   const [errors, setErrors] = useState({});
   const [isSuccess, setIsSuccess] = useState(false);
+  const [paswordIcon, setPasswordIcon] = useState(eyeOff)
+  const [passwordType, setPasswordType] = useState('password')
+  const [paswordIcon2, setPasswordIcon2] = useState(eyeOff)
+  const [passwordType2, setPasswordType2] = useState('password')
 
   const navigate = useNavigate()
 
   const home = () => {
       navigate('/')
   }
+
+  const handleToggle = () => {
+      if(passwordType === 'password') {
+          setPasswordIcon(eye)
+          setPasswordType('text')
+      } else {
+          setPasswordIcon(eyeOff)
+          setPasswordType('password')
+      }
+  }
+
+  const handleToggle2 = () => {
+    if(passwordType2 === 'password') {
+        setPasswordIcon2(eye)
+        setPasswordType2('text')
+    } else {
+        setPasswordIcon2(eyeOff)
+        setPasswordType2('password')
+    }
+}
 
   const registerCallback = (data) => {
     const newErrors = {};
@@ -117,7 +144,7 @@ const GameSignupForm = (props) => {
         </div>
 
         {/* Form Card */}
-        <div className="bg-white rounded-lg shadow-xl p-8">
+        <div className="bg-white rounded-lg shadow-xl p-10">
           <form onSubmit={handleSubmit}>
             <div className="space-y-6">
               <div>
@@ -158,17 +185,23 @@ const GameSignupForm = (props) => {
                 <label className="block text-sm font-medium text-gray-700 mb-2">
                   Password
                 </label>
-                <input
-                  type="password"
-                  name="password"
-                  value={formData.password}
-                  onChange={handleChange}
-                  className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
-                  required
-                />
+                <span>
+                  <input
+                    type={passwordType}
+                    name="password"
+                    value={formData.password}
+                    onChange={handleChange}
+                    className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                    required
+                  />
+                  <Icon className="absolute mr-10" style={{'margin-top': '5px', 'margin-left': '5px', 'cursor': 'pointer'}} 
+                    icon={paswordIcon} size={25} onClick={handleToggle} />
+                </span>
                 {errors.password && (
                   <p className="text-sm text-red-500">{errors.password}</p>
                 )}
+                <span className="flex justify-around items-center" onClick={handleToggle}>                    
+                </span>
               </div>
 
               <div>
@@ -176,13 +209,15 @@ const GameSignupForm = (props) => {
                   Conferma Password
                 </label>
                 <input
-                  type="password"
+                  type={passwordType2}
                   name="confirmPassword"
                   value={formData.confirmPassword}
                   onChange={handleChange}
                   className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
                   required
                 />
+                <Icon className="absolute mr-10" style={{'margin-top': '5px', 'margin-left': '5px', 'cursor': 'pointer'}} 
+                  icon={paswordIcon2} size={25} onClick={handleToggle2} />
               </div>
 
               <button

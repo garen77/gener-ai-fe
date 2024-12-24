@@ -19,20 +19,20 @@ const Password = (props) => {
 
     return(
         <div className={'inputContainer'}>
-        <label htmlFor='password'>Password</label>
-        <input
-        id={"password"}
-        type={passwordType}
-        value={props.password}
-        placeholder={props.placeholder ? props.placeholder : "Enter your password here"}
-        onChange={(ev) => props.setPassword(ev.target.value)}
-        className={'inputBox'}
-        />
-        <label className="errorLabel">{props.passwordError}</label>
-        <span className="flex justify-around items-center" onClick={handleToggle}>
-            <Icon className="absolute mr-10" style={{'margin-bottom': '3rem'}} icon={paswordIcon} size={25}/>
-        </span>
-    </div>
+            <label htmlFor='password'>Password</label>
+            <input
+            id={"password"}
+            type={passwordType}
+            value={props.password}
+            placeholder={props.placeholder ? props.placeholder : "Enter your password here"}
+            onChange={(ev) => props.setPassword(ev.target.value)}
+            className={'inputBox'}
+            />
+            <label className="errorLabel">{props.passwordError}</label>
+            <span className="flex justify-around items-center" onClick={handleToggle}>
+                <Icon className="absolute mr-10" style={{'margin-bottom': '3rem'}} icon={paswordIcon} size={25}/>
+            </span>
+        </div>
     )
 }
 
