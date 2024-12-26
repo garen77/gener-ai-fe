@@ -5,6 +5,7 @@ import './GameSignupForm.scss'
 import {Icon} from 'react-icons-kit'
 import {eyeOff} from 'react-icons-kit/feather/eyeOff'
 import {eye} from 'react-icons-kit/feather/eye'
+import { BounceLoader } from 'react-spinners';
 
 const GameSignupForm = (props) => {
   const [formData, setFormData] = useState({
@@ -107,10 +108,19 @@ const GameSignupForm = (props) => {
     } catch (error) {
       setErrors({ submit: 'Si è verificato un errore. Riprova più tardi.' });
     } finally {
-        props.setLoading(false)
+        
     }
     console.log('Form submitted:', formData);
   };
+
+
+  const getLogin = () => {
+    return (
+      <button onClick={home} className="text-purple-600 hover:text-purple-700 font-medium">
+        Accedi
+      </button>
+    )
+  }
 
   if(isSuccess) {
     return (
@@ -124,9 +134,18 @@ const GameSignupForm = (props) => {
             <p className="text-center text-gray-600 mt-2">
               Accedi ai giochi online
             </p>
+            {getLogin()}
           </div>
         </div>
       </div>
+    )
+  }
+
+  if(props.loading) {
+    return (
+        <div className='spinner-center'>
+            <BounceLoader loading={props.loading} size={50} color="#123abc" speedMultiplier={1.5} />
+        </div>
     )
   }
 
@@ -232,9 +251,7 @@ const GameSignupForm = (props) => {
           <div className="mt-6 text-center">
             <p className="text-gray-600">
               Hai già un account?{' '}
-              <button onClick={home} className="text-purple-600 hover:text-purple-700 font-medium">
-                Accedi
-              </button>
+              {getLogin()}
             </p>
           </div>
         </div>
