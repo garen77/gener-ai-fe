@@ -15,12 +15,11 @@ const GameLoginForm = (props) => {
   const [passwordType, setPasswordType] = useState('password')
   const [userNameError, setUserNameError] = useState('')
   const [passwordError, setPasswordError] = useState('')
-  const [responseLogin, setResponseLogin] = useState('')
+  
   const navigate = useNavigate()
 
   const manageLoggedUser = (data) => {
     if(data && data.username) {
-        setResponseLogin("Welcome " + data.username + "!!!")
         props.setLoggedIn(true)
         if(data.email) {
           props.setEmail(data.email)
@@ -34,7 +33,6 @@ const GameLoginForm = (props) => {
         if(data && data.includes('Password')) {
             setPasswordError(data)
         }
-        setResponseLogin(data + "!!!")
         props.setLoggedIn(false)
     }
     props.setLoading(false)
