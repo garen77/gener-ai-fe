@@ -5,7 +5,7 @@ import './GameSignupForm.scss'
 import {Icon} from 'react-icons-kit'
 import {eyeOff} from 'react-icons-kit/feather/eyeOff'
 import {eye} from 'react-icons-kit/feather/eye'
-import { BounceLoader } from 'react-spinners';
+import Spinner from '../common';
 
 const GameSignupForm = (props) => {
   const [formData, setFormData] = useState({
@@ -143,10 +143,10 @@ const GameSignupForm = (props) => {
 
   if(props.loading) {
     return (
-        <div className='spinner-center'>
-            <BounceLoader loading={props.loading} size={50} color="#123abc" speedMultiplier={1.5} />
-        </div>
-    )
+      <Spinner props={{
+          ...props
+      }} />    
+  )
   }
 
   return (
