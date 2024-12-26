@@ -28,6 +28,12 @@ const GameLoginForm = (props) => {
           props.setEmail('')
         }  
     } else {
+        if(data && (data.includes('Utente') || (data.includes('Username')))) {
+            setUserNameError(data)
+        }
+        if(data && data.includes('Password')) {
+            setPasswordError(data)
+        }
         setResponseLogin(data + "!!!")
         props.setLoggedIn(false)
     }
@@ -46,6 +52,8 @@ const GameLoginForm = (props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setUserNameError('')
+    setPasswordError('')
     if ('' === formData.username) {
         setUserNameError('Please enter your username')
         return
@@ -90,7 +98,8 @@ const GameLoginForm = (props) => {
   }
 
   return (
-    !responseLogin ? (<div className="flex min-h-screen items-center justify-center bg-gradient-to-br from-purple-600 to-blue-500">
+    <>
+    <div className="flex min-h-screen items-center justify-center bg-gradient-to-br from-purple-600 to-blue-500">
       <div className="w-full max-w-md p-10 m-4 bg-white rounded-lg shadow-xl">
         <div className="text-center mb-8">
           <h1 className="text-3xl font-bold text-gray-800">Game Center</h1>
@@ -141,21 +150,16 @@ const GameLoginForm = (props) => {
             Accedi
           </button>
         </form>
-        
         <div className="mt-6 text-center">
-          <p className="mt-4 text-sm text-gray-600">
+            <p className="mt-4 text-sm text-gray-600">
             Non hai un account?{' '}
             {getSignupForm()}
-          </p>
+            </p>
         </div>
+
       </div>
-    </div>)
-    :
-    (<div className={'mainContainer'}>
-        <div className={'titleContainer'}>
-            <div>{responseLogin}</div>
-        </div>
-    </div>)
+    </div>
+    </>
   );
 };
 
