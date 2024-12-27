@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import GameLoginForm from '../GameLoginForm/GameLoginForm'
+import GamesLoginForm from '../GamesLoginForm/GamesLoginForm'
 
 const Home = (props) => {
   const { loggedIn, email } = props
@@ -37,7 +37,7 @@ const Home = (props) => {
             :
         (
           <>
-            <GameLoginForm loading={props.loading} setLoading={props.setLoading} setLoggedIn={props.setLoggedIn} setEmail={props.setEmail} />
+            <GamesLoginForm loading={props.loading} setLoading={props.setLoading} setLoggedIn={props.setLoggedIn} setEmail={props.setEmail} />
             {!props.loading && <div>
               or <Link to='/register'>Register</Link>
             </div>}

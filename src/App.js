@@ -4,13 +4,12 @@ import './App.css'
 import { useState } from 'react'
 import Menu from './components/menu/menu'
 import PopupBalloon from './components/popaballoon/PopupBalloon'
-import GameSignupForm from './components/GameSignupForm/GameSignupForm'
+import GamesSignupForm from './components/GamesSignupForm/GamesSignupForm'
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(false)
   const [email, setEmail] = useState('')
   const [loading, setLoading] = useState(false)
-/*<Route path="/register" element={<Register loading={loading} setLoading={setLoading} setLoggedIn={setLoggedIn} setEmail={setEmail} />} />*/
   return (
     <div className="App">
       <BrowserRouter>
@@ -20,7 +19,7 @@ function App() {
             path="/"
             element={<Home loading={loading} setLoading={setLoading} email={email} loggedIn={loggedIn} setLoggedIn={setLoggedIn} setEmail={setEmail} />}
           />
-          <Route path="/register" element={<GameSignupForm loading={loading} setLoading={setLoading} setLoggedIn={setLoggedIn} setEmail={setEmail} />} />
+          <Route path="/register" element={<GamesSignupForm loading={loading} setLoading={setLoading} setLoggedIn={setLoggedIn} setEmail={setEmail} />} />
           <Route path="/balloon" element={<PopupBalloon />} />
         </Routes>
       </BrowserRouter>

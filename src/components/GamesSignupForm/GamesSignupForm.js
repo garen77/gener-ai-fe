@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { register } from '../../Services'
 import { useNavigate } from 'react-router-dom';
-import './GameSignupForm.scss'
+import './GamesSignupForm.scss'
 import {Icon} from 'react-icons-kit'
 import {eyeOff} from 'react-icons-kit/feather/eyeOff'
 import {eye} from 'react-icons-kit/feather/eye'
@@ -219,8 +219,6 @@ const GameSignupForm = (props) => {
                 {errors.password && (
                   <p className="text-sm text-red-500">{errors.password}</p>
                 )}
-                <span className="flex justify-around items-center" onClick={handleToggle}>                    
-                </span>
               </div>
 
               <div>
