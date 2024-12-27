@@ -34,6 +34,7 @@
     cursor: pointer;
 
     transition: 1s;
+
 }
 
 .m-item:hover{
@@ -41,18 +42,21 @@
 }
 
 .m-logo{
-    z-index: 1;
+    z-index: 100;
 }
 
 .open-1{
     top: 1.8em;
     background-color: #9b5de5;
+    z-index: 100 !important
 }
 .open-2{
     top: 3.6em;
     background-color: $pink;
+    z-index: 100 !important
 }
 .open-3{
     top: 5.4em;
     background-color: #00BBF9;
+    z-index: 100 !important
 }
