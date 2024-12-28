@@ -18,7 +18,7 @@ const Home = (props) => {
       {
         loggedIn ? 
           (
-            <GamesHome />
+            <GamesHome loading={props.loading} setLoading={props.setLoading} />
           )
             :
         (

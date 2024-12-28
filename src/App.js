@@ -20,7 +20,7 @@ function App() {
             element={<Home loading={loading} setLoading={setLoading} email={email} loggedIn={loggedIn} setLoggedIn={setLoggedIn} setEmail={setEmail} />}
           />
           <Route path="/register" element={<GamesSignupForm loading={loading} setLoading={setLoading} setLoggedIn={setLoggedIn} setEmail={setEmail} />} />
-          <Route path="/balloon" element={<PopupBalloon />} />
+          <Route path="/popaballoon" element={<PopupBalloon />} />
         </Routes>
       </BrowserRouter>
     </div>
