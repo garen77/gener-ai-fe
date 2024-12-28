@@ -1,16 +1,5 @@
 import { BounceLoader } from "react-spinners"
 
-/*
-            <div className={'mainContainer'}>
-                <div className={'titleContainer'}>
-                    <div>
-                        <div className='spinner-center'>
-                            <BounceLoader loading={props.loading} size={50} color="#123abc" speedMultiplier={1.5} />
-                        </div>
-                    </div>
-                </div>
-            </div>
-*/
 const Spinner = (props) => {
     return (
         <>
