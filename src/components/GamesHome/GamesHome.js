@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Search } from 'lucide-react';
+import { genericPost } from '../../Services';
 
-const gamesData = [
+/*const gamesData = [
   {
     id: 1,
     title: "League of Legends",
@@ -34,7 +35,7 @@ const gamesData = [
     image: "/api/placeholder/300/200",
     rating: 4.6
   }
-];
+];*/
 
 const GameCard = ({ game }) => {
   return (
@@ -64,49 +65,60 @@ const GameCard = ({ game }) => {
 };
 
 const GamesHome = () => {
-  return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-600 to-blue-500 p-6">
-      {/* Header */}
-      <header className="max-w-6xl mx-auto mb-8">
-        <h1 className="text-4xl font-bold text-gray-800 mb-4 flex items-center justify-center">
-          GameHub Online
-        </h1>
-        
-        {/* Search Bar */}
-        <div className="relative">
-          <input
-            type="text"
-            placeholder="Cerca il tuo gioco..."
-            className="w-full px-6 py-3 pl-12 rounded-lg border border-gray-300 focus:outline-none focus:border-blue-500"
-          />
-          <Search className="absolute left-4 top-3.5 text-gray-400" size={20} />
-        </div>
-      </header>
+  
+    const [gamesData, setGamesData] = useState([])
 
-      {/* Categories */}
-      <div className="max-w-6xl mx-auto mb-8">
-        <div className="flex gap-4 overflow-x-auto pb-2">
-          {['Tutti', 'MOBA', 'FPS', 'Battle Royale', 'RPG', 'Sandbox'].map((category) => (
-            <button
-              key={category}
-              className="px-4 py-2 bg-white rounded-full shadow-sm hover:bg-blue-500 hover:text-white transition-colors whitespace-nowrap"
-            >
-              {category}
-            </button>
-          ))}
-        </div>
-      </div>
+    useEffect(() => {
+        genericPost('games-list',{}, gamesListCallback)
+    },[])
 
-      {/* Games Grid */}
-      <main className="max-w-6xl mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {gamesData.map((game) => (
-            <GameCard key={game.id} game={game} />
-          ))}
+    const gamesListCallback = (data) => {
+        setGamesData(data)
+    }
+
+    return (
+        <div className="min-h-screen bg-gradient-to-br from-purple-600 to-blue-500 p-6">
+        {/* Header */}
+        <header className="max-w-6xl mx-auto mb-8">
+            <h1 className="text-4xl font-bold text-gray-800 mb-4 flex items-center justify-center">
+            GameHub Online
+            </h1>
+            
+            {/* Search Bar */}
+            <div className="relative">
+            <input
+                type="text"
+                placeholder="Cerca il tuo gioco..."
+                className="w-full px-6 py-3 pl-12 rounded-lg border border-gray-300 focus:outline-none focus:border-blue-500"
+            />
+            <Search className="absolute left-4 top-3.5 text-gray-400" size={20} />
+            </div>
+        </header>
+
+        {/* Categories */}
+        <div className="max-w-6xl mx-auto mb-8">
+            <div className="flex gap-4 overflow-x-auto pb-2">
+            {['Tutti', 'MOBA', 'FPS', 'Battle Royale', 'RPG', 'Sandbox'].map((category) => (
+                <button
+                key={category}
+                className="px-4 py-2 bg-white rounded-full shadow-sm hover:bg-blue-500 hover:text-white transition-colors whitespace-nowrap"
+                >
+                {category}
+                </button>
+            ))}
+            </div>
         </div>
-      </main>
-    </div>
-  );
+
+        {/* Games Grid */}
+        <main className="max-w-6xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {gamesData.map((game) => (
+                <GameCard key={game._id} game={game} />
+            ))}
+            </div>
+        </main>
+        </div>
+    );
 };
 
 export default GamesHome;

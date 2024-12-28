@@ -135,7 +135,7 @@ const GameLoginForm = (props) => {
                 className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500"
                 required
                 />
-                <Icon className="absolute mr-10" style={{'margin-top': '5px', 'margin-left': '5px', 'cursor': 'pointer'}} 
+                <Icon className="absolute mr-10" style={{marginTop: '5px', marginLeft: '5px', 'cursor': 'pointer'}} 
                     icon={paswordIcon} size={25} onClick={handleToggle} />
             </span>
             <label className="errorLabel">{passwordError}</label>
