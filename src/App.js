@@ -5,6 +5,7 @@ import { useState } from 'react'
 import Menu from './components/menu/menu'
 import PopupBalloon from './components/popaballoon/PopupBalloon'
 import GamesSignupForm from './components/GamesSignupForm/GamesSignupForm'
+import RockPaperScissorsLizardSpock from './components/rockpaperscistors/rpsls'
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(false)
@@ -21,6 +22,7 @@ function App() {
           />
           <Route path="/register" element={<GamesSignupForm loading={loading} setLoading={setLoading} setLoggedIn={setLoggedIn} setEmail={setEmail} />} />
           <Route path="/popaballoon" element={<PopupBalloon />} />
+          <Route path="/rpsls" element={<RockPaperScissorsLizardSpock />} />
         </Routes>
       </BrowserRouter>
     </div>
