@@ -13,7 +13,7 @@ const Header = () => {
     <div>
         <div className='header'>
             <h1>Rock Paper Scissors ... Lizard Spock !</h1>
-            <Popup trigger={<button className='rulesbtn' onClick={toggleRules}>Rules</button>} modal nested>{<Rules />}</Popup>
+            <Popup trigger={<button className='clsButton rulesbtn' onClick={toggleRules}>Rules</button>} modal nested>{<Rules />}</Popup>
         </div>
         
     </div>

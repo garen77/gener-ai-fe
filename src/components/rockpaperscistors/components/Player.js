@@ -72,11 +72,11 @@ function Player({plyScore, setChoice, plyChoice, getWin, plyRst, rst}) {
         </div>
         <div>{plyRst === "" ? (
                 <div>
-                    <button onClick={getWin}>Confirm Choice</button>
+                    <button className='clsButton' onClick={getWin}>Confirm Choice</button>
                 </div>
             ): (<div>
                     <h4>You {plyRst}</h4>
-                    <button onClick={rst}>Play Again</button>
+                    <button className='clsButton' onClick={rst}>Play Again</button>
                 </div>) 
             }</div>
     </div>

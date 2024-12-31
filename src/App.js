@@ -2,7 +2,6 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import Home from './components/home/home'
 import './App.css'
 import { useState } from 'react'
-import Menu from './components/menu/menu'
 import PopupBalloon from './components/popaballoon/PopupBalloon'
 import GamesSignupForm from './components/GamesSignupForm/GamesSignupForm'
 import RockPaperScissorsLizardSpock from './components/rockpaperscistors/rpsls'
@@ -14,7 +13,6 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
-        {loggedIn ? <Menu /> : null }
         <Routes>
           <Route
             path="/"
