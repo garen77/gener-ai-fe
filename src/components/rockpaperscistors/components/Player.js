@@ -3,7 +3,6 @@ import * as tf from "@tensorflow/tfjs";
 import * as handpose from "@tensorflow-models/handpose";
 import Webcam from 'react-webcam';
 import * as fp from "fingerpose";
-
 import rockGesture from '../poses/rock';
 import paperGesture from '../poses/paper';
 import scissorsGesture from '../poses/scissors';
@@ -60,6 +59,7 @@ function Player({plyScore, setChoice, plyChoice, getWin, plyRst, rst}) {
     
       useEffect(()=>{runHandpose()},[]);
 
+      
   return (
     <div className='player'>
         <h3 className='cptxt'>YOUR SCORE: {plyScore}</h3>
