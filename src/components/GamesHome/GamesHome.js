@@ -39,7 +39,7 @@ const GameCard = ({ game, userName }) => {
             </div>
             </div>
             <p className="text-gray-600 text-sm">
-            Giocatori attivi: {game.players}
+            Giocatori attivi: { game.users ? game.users.length : 0 }
             </p>
         </div>
         </div>
