@@ -18,12 +18,12 @@ const Home = (props) => {
       {
         loggedIn ? 
           (
-            <GamesHome loading={props.loading} setLoading={props.setLoading} />
+            <GamesHome loading={props.loading} setLoading={props.setLoading} userName={props.userName} />
           )
             :
         (
           <>
-            <GamesLoginForm loading={props.loading} setLoading={props.setLoading} setLoggedIn={props.setLoggedIn} setEmail={props.setEmail} />
+            <GamesLoginForm loading={props.loading} setLoading={props.setLoading} setLoggedIn={props.setLoggedIn} setUserName={props.setUserName} />
             {!props.loading && <div>
               or <Link to='/register'>Register</Link>
             </div>}

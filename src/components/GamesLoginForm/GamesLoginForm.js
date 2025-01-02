@@ -21,11 +21,7 @@ const GameLoginForm = (props) => {
   const manageLoggedUser = (data) => {
     if(data && data.username) {
         props.setLoggedIn(true)
-        if(data.email) {
-          props.setEmail(data.email)
-        } else {
-          props.setEmail('')
-        }  
+        props.setUserName(data.username)
     } else {
         if(data && (data.includes('Utente') || (data.includes('Username')))) {
             setUserNameError(data)

@@ -4,48 +4,22 @@ import { genericPost } from '../../Services';
 import { useNavigate } from 'react-router-dom';
 import Spinner from '../common';
 
-/*const gamesData = [
-  {
-    id: 1,
-    title: "League of Legends",
-    category: "MOBA",
-    players: "10M+",
-    image: "/api/placeholder/300/200",
-    rating: 4.5
-  },
-  {
-    id: 2,
-    title: "Fortnite",
-    category: "Battle Royale",
-    players: "15M+",
-    image: "/api/placeholder/300/200",
-    rating: 4.3
-  },
-  {
-    id: 3,
-    title: "Minecraft",
-    category: "Sandbox",
-    players: "20M+",
-    image: "/api/placeholder/300/200",
-    rating: 4.8
-  },
-  {
-    id: 4,
-    title: "Counter-Strike",
-    category: "FPS",
-    players: "8M+",
-    image: "/api/placeholder/300/200",
-    rating: 4.6
-  }
-];*/
-
-const GameCard = ({ game }) => {
+const GameCard = ({ game, userName }) => {
 
     const navigate = useNavigate()
 
+    const updateGameUserCallback = (data) => {
+        console.log(data)
+    }
+
     const goToGame = () => {
+        genericPost('update-game-user',{
+            userName: userName,
+            gameName: game.name
+        }, updateGameUserCallback)
         navigate('/' + game.name)
     }
+
     return (
         <div className="bg-white rounded-lg shadow-lg overflow-hidden transition-transform duration-300 hover:scale-105"
             onClick={goToGame}>
@@ -125,7 +99,7 @@ const GamesHome = (props) => {
             <main className="max-w-6xl mx-auto">
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                 {gamesData.map((game) => (
-                    <GameCard key={game._id} game={game} />
+                    <GameCard key={game._id} game={game} userName={props.userName} />
                 ))}
                 </div>
             </main>
