@@ -23,7 +23,7 @@ const GameContainer = (props) => {
                     <button onClick={onLogout} className="text-purple-300 hover:text-purple-400 font-medium">
                         Log out
                     </button>
-                    <button onClick={onLogout} className="text-purple-300 hover:text-purple-400 font-medium">
+                    <button onClick={back} className="text-purple-300 hover:text-purple-400 font-medium">
                         Back
                     </button>
                 </div>
