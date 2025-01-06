@@ -2,23 +2,21 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import GamesLoginForm from '../GamesLoginForm/GamesLoginForm'
 import GamesHome from '../GamesHome/GamesHome'
+import GameContainer from '../GameContainer/GameContainer'
 
 const Home = (props) => {
   const { loggedIn, email } = props
-
-  const onLogout = () => {
-    if(loggedIn) {
-        localStorage.removeItem('user')
-        props.setLoggedIn(false)
-    }
-  }
 
   return (
     <>
       {
         loggedIn ? 
           (
-            <GamesHome loading={props.loading} setLoading={props.setLoading} userName={props.userName} />
+            <>
+              <GameContainer loggedIn={loggedIn} setLoggedIn={props.setLoggedIn}>
+                <GamesHome loading={props.loading} setLoading={props.setLoading} userName={props.userName} />
+              </GameContainer>
+            </>
           )
             :
         (

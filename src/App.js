@@ -5,6 +5,7 @@ import { useState } from 'react'
 import PopupBalloon from './components/popaballoon/PopupBalloon'
 import GamesSignupForm from './components/GamesSignupForm/GamesSignupForm'
 import RockPaperScissorsLizardSpock from './components/rockpaperscistors/rpsls'
+import GameContainer from './components/GameContainer/GameContainer'
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(false)
@@ -19,8 +20,16 @@ function App() {
             element={<Home loading={loading} setLoading={setLoading} userName={userName} loggedIn={loggedIn} setLoggedIn={setLoggedIn} setUserName={setUserName} />}
           />
           <Route path="/register" element={<GamesSignupForm loading={loading} setLoading={setLoading} setLoggedIn={setLoggedIn} setUserName={setUserName} />} />
-          <Route path="/popaballoon" element={<PopupBalloon />} />
-          <Route path="/rpsls" element={<RockPaperScissorsLizardSpock />} />
+          <Route path="/popaballoon" element={
+            <GameContainer loggedIn={loggedIn} setLoggedIn={setLoggedIn}>
+              <PopupBalloon />
+            </GameContainer>
+          } />
+          <Route path="/rpsls" element={
+            <GameContainer loggedIn={loggedIn} setLoggedIn={setLoggedIn}>
+              <RockPaperScissorsLizardSpock />
+            </GameContainer>
+          } />
         </Routes>
       </BrowserRouter>
     </div>
