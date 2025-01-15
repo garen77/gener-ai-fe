@@ -6,6 +6,7 @@ import PopupBalloon from './components/popaballoon/PopupBalloon'
 import GamesSignupForm from './components/GamesSignupForm/GamesSignupForm'
 import RockPaperScissorsLizardSpock from './components/rockpaperscistors/rpsls'
 import GameContainer from './components/GameContainer/GameContainer'
+import Snake from './components/snake/Snake'
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(false)
@@ -28,6 +29,11 @@ function App() {
           <Route path="/rpsls" element={
             <GameContainer loggedIn={loggedIn} setLoggedIn={setLoggedIn}>
               <RockPaperScissorsLizardSpock />
+            </GameContainer>
+          } />
+          <Route path="/snake" element={
+            <GameContainer loggedIn={loggedIn} setLoggedIn={setLoggedIn}>
+              <Snake />
             </GameContainer>
           } />
         </Routes>
