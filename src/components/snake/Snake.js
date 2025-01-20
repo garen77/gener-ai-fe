@@ -10,11 +10,11 @@ const DOWN = Symbol("down");
 const RIGHT = Symbol("right");
 const LEFT = Symbol("left");
 
-const gameAudio = new Audio("/audio/snake/gameplay.mp3");
+const gameAudio = new Audio("/audio/snake/game.mp3");
 gameAudio.loop = true;
 
-const bonusAudio = new Audio("/audio/snake/point.mp3");
-const errorAudio = new Audio("/audio/snake/error.mp3");
+const bonusAudio = new Audio("/audio/snake/eaten.mp3");
+const errorAudio = new Audio("/audio/snake/fail.mp3");
 
 function Snake() {
     const timer = useRef(null);
