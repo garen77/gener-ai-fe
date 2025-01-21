@@ -19,9 +19,9 @@ const errorAudio = new Audio("/audio/snake/fail.mp3");
 function Snake() {
     const timer = useRef(null);
     const grid = useRef(Array(ROWs).fill(Array(COLs).fill("")));
-    const snakeCoordinates = useRef([]);
+    var snakeCoordinates = useRef([]);
     const direction = useRef(RIGHT);
-    const snakeCoordinatesMap = useRef(new Set());
+    var snakeCoordinatesMap = useRef(new Set());
     const foodCoords = useRef({
         row: -1,
         col: -1,
@@ -36,6 +36,10 @@ function Snake() {
 
     useEffect(() => {
         // Default snake length is 4 cell
+        setup();
+    }, []);
+
+    const setup = () => {
         const snake_postions = [];
         for (let i = 0; i < DEFAULT_LENGTH; i++) {
             snake_postions.push({
@@ -50,7 +54,16 @@ function Snake() {
 
         syncSnakeCoordinatesMap();
         populateFoodBall();
-    }, []);
+    }
+
+    const restartGame = () => {
+        direction.current = RIGHT;
+        setGameOver(false);
+        setPlaying(0);
+        setPoints(0);
+        setup();
+        //moveSnake();
+    }
 
     const handleDirectionChange = (key) => {
         direction.current = getNewDirection(key);
@@ -189,6 +202,9 @@ function Snake() {
         if (timer.current) {
             clearInterval(timer.current);
         }
+        setTimeout(() => {
+            restartGame();
+        }, 300);
     };
 
     const getCell = useCallback(
